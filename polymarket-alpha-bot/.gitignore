@@ -1,0 +1,8 @@
+node_modules/
+dist/
+dist-dashboard/
+.env
+coverage/
+data/*.json
+!data/.gitkeep
+backtest_results.json

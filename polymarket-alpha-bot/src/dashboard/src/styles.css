@@ -1,0 +1,164 @@
+:root {
+  color-scheme: dark;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: #0a0a0f;
+  color: #e8e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0a0a0f;
+  color: #e8e8f0;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.header h1 {
+  font-family: "Syne", sans-serif;
+  margin: 0 0 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.panel {
+  background: #11111a;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.chartPanel {
+  margin-top: 12px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #2a2a3a;
+  padding: 6px;
+  text-align: left;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dotLive {
+  background: #00ff88;
+  animation: pulse 1.2s infinite;
+}
+
+.dotHalted {
+  background: #ff3b5c;
+}
+
+.profit {
+  color: #00ff88;
+}
+
+.loss {
+  color: #ff3b5c;
+}
+
+.pulse {
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.pulse:hover {
+  transform: scale(1.02);
+}
+
+.feed {
+  max-height: 380px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feedItem {
+  border: 1px solid #2a2a3a;
+  border-radius: 6px;
+  padding: 8px;
+  display: grid;
+  gap: 3px;
+}
+
+.dimmed {
+  opacity: 0.55;
+}
+
+.dangerButton {
+  margin-top: 10px;
+  background: #ff3b5c;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.riskBar {
+  display: grid;
+  grid-template-columns: 140px 1fr 56px;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.riskTrack {
+  background: #2a2a3a;
+  height: 10px;
+  border-radius: 10px;
+}
+
+.riskFill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 240ms ease;
+}
+
+.loading {
+  padding: 24px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
