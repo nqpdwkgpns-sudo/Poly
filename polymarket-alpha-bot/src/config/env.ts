@@ -1,15 +1,13 @@
 import 'dotenv/config';
 import { z } from 'zod';
 
-const numFromString = (def?: number) =>
-  z
-    .preprocess((v) => {
-      if (v === undefined || v === null || v === '') return def;
-      if (typeof v === 'number') return v;
-      const n = Number(v);
-      return Number.isFinite(n) ? n : v;
-    }, z.number())
-    .optional();
+const numFromString = (def: number) =>
+  z.preprocess((v) => {
+    if (v === undefined || v === null || v === '') return def;
+    if (typeof v === 'number') return v;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : v;
+  }, z.number());
 
 const required = z.string().min(1);
 const optStr = z.string().optional().default('');

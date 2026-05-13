@@ -15,7 +15,7 @@ export function updateDrawdown(state: BotState, currentBalance: number): Drawdow
 }
 
 export function getDrawdown(state: BotState): DrawdownInfo {
-  const peak = Math.max(state.peakBalanceUsdc, state.balanceUsdc, 1);
+  const peak = Math.max(state.peakBalanceUsdc, state.balanceUsdc);
   const dd = peak <= 0 ? 0 : Math.max(0, (peak - state.balanceUsdc) / peak);
   const limit = config.MAX_DRAWDOWN_PCT ?? 0.2;
   return {
