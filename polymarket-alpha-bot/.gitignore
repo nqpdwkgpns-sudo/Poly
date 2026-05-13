@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+coverage/
+data/state.json
+data/positions.json
+data/backtest_results.json
+src/dashboard/dist/
+.vite/
