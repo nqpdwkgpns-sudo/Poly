@@ -93,7 +93,7 @@ export class GammaClient {
 
     const outcomes: MarketOutcome[] = (raw.outcomes ?? []).map((outcome, index) => ({
       outcome,
-      tokenId: tokenIds[index] ?? tokenIds[0]
+      tokenId: tokenIds[index] ?? tokenIds[0] ?? ""
     }));
 
     return {

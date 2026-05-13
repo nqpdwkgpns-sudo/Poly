@@ -40,7 +40,7 @@ export class PositionTracker {
   public openPosition(market: Market, side: Side, price: number, size: number): Position {
     const position: Position = {
       conditionId: market.conditionId,
-      tokenId: market.tokenIds[side === "BUY" ? 0 : 1] ?? market.tokenIds[0],
+      tokenId: market.tokenIds[side === "BUY" ? 0 : 1] ?? market.tokenIds[0] ?? "",
       marketQuestion: market.question,
       category: market.category,
       side,

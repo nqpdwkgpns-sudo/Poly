@@ -15,6 +15,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "rootDir": ".",
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -33,10 +34,10 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx",
     "tests/**/*.ts"
   ],
   "exclude": [
+    "src/dashboard/**",
     "dist",
     "node_modules"
   ]

@@ -3,6 +3,11 @@ import { z } from "zod";
 
 dotenv.config();
 
+const envInput: NodeJS.ProcessEnv = { ...process.env };
+if (envInput.VITEST && !envInput.PHANTOM_PRIVATE_KEY) {
+  envInput.PHANTOM_PRIVATE_KEY = "test-private-key";
+}
+
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   POLYMARKET_API_KEY: z.string().optional(),
@@ -19,10 +24,11 @@ const envSchema = z.object({
   TELEGRAM_CHAT_ID: z.string().optional()
 });
 
-const parsed = envSchema.safeParse(process.env);
+const parsed = envSchema.safeParse(envInput);
 
 if (!parsed.success) {
-  const details = parsed.error.errors.map((issue) => `${issue.path.join(".")}: ${issue.message}`).join("; ");
+  const issues = "issues" in parsed.error ? parsed.error.issues : [];
+  const details = issues.map((issue) => `${issue.path.join(".")}: ${issue.message}`).join("; ");
   throw new Error(`Invalid environment configuration: ${details}`);
 }
 

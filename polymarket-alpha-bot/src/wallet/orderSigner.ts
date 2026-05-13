@@ -24,7 +24,7 @@ export interface PolymarketOrder {
   timestamp: number;
 }
 
-const orderTypes = {
+const orderTypes: Record<string, Array<{ name: string; type: string }>> = {
   Order: [
     { name: "maker", type: "address" },
     { name: "taker", type: "address" },
@@ -37,7 +37,7 @@ const orderTypes = {
     { name: "salt", type: "uint256" },
     { name: "timestamp", type: "uint256" }
   ]
-} as const;
+};
 
 export class OrderSigner {
   constructor(private readonly phantomAdapter: PhantomAdapter) {}

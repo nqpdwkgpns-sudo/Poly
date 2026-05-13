@@ -27,6 +27,9 @@ export const checkMaxPositionSize = (signal: Signal): string | null => {
 
 export const checkConcentration = (signal: Signal, state: BotState, category: string): string | null => {
   const totalExposure = state.openPositions.reduce((acc, position) => acc + position.entryPrice * position.size, 0);
+  if (totalExposure === 0) {
+    return null;
+  }
   const categoryExposure = state.openPositions
     .filter((position) => position.category.toLowerCase() === category.toLowerCase())
     .reduce((acc, position) => acc + position.entryPrice * position.size, 0);

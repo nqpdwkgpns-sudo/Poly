@@ -30,7 +30,7 @@ export class OrderManager extends EventEmitter {
   }
 
   public async submitOrder(signedOrder: SignedOrder): Promise<string> {
-    const { orderId } = await this.clobClient.placeOrder(signedOrder);
+    const { orderId } = await this.clobClient.placeOrder(signedOrder as unknown as LimitOrder & Record<string, unknown>);
     this.orderStates.set(orderId, {
       orderId,
       tokenId: signedOrder.tokenId,

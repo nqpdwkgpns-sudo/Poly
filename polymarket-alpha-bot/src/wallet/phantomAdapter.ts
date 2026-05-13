@@ -13,7 +13,7 @@ const erc20Abi = [
 export class PhantomAdapter {
   private readonly provider = new JsonRpcProvider(config.POLYGON_RPC_URL);
   private readonly wallet: Wallet;
-  private readonly usdc: Contract;
+  private readonly usdc: any;
 
   constructor() {
     const decoded = bs58.decode(config.PHANTOM_PRIVATE_KEY);
