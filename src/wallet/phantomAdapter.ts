@@ -19,7 +19,7 @@ export class PhantomAdapter {
     this.provider = new JsonRpcProvider(config.POLYGON_RPC_URL);
     this.paperWallet = !privateKey && config.PAPER_TRADING;
     if (this.paperWallet) {
-      this.wallet = Wallet.createRandom().connect(this.provider);
+      this.wallet = new Wallet(Wallet.createRandom().privateKey, this.provider);
       logger.warn('PAPER_TRADING enabled and PHANTOM_PRIVATE_KEY missing; using ephemeral paper wallet');
       return;
     }
