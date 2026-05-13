@@ -1,0 +1,10 @@
+node_modules/
+dist/
+src/dashboard/dist/
+.env
+.env.*
+!.env.example
+data/*.json
+backtest_results.json
+*.log
+.DS_Store

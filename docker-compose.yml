@@ -1,0 +1,21 @@
+services:
+  bot:
+    build:
+      context: .
+      target: bot
+    env_file: .env
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
+  dashboard:
+    image: nginx:alpine
+    depends_on:
+      - bot
+    ports:
+      - "80:80"
+    volumes:
+      - ./src/dashboard/dist:/usr/share/nginx/html:ro
+    restart: unless-stopped
